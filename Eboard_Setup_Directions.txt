@@ -1,0 +1,28 @@
+Eboard Slideshow Viewer
+	This program is a python derivative of the original Eboard program coded for Rico.
+	It will grab an image served from a definable webpage and display it to the screen as a slideshow.
+	The program makes use of a ramdrive for faster image swapping and to reduce writes to the SDCard.
+	Please follow the directions below for proper installation and operation of the program.
+
+
+To Install the python Eboard program:
+
+	1) Install Raspbian Stretch to RasPi
+	2) Edit the following file to disable screensaver mode on Pi:
+			/etc/xdg/lxsession/LXDE-pi/autostart
+	   and add the following lines to the end:
+			@xset s noblank
+			@xset s off
+			@xset -dpms
+	   then save the file.
+	3) Create a ramdisk by entering the following commands in terminal:
+	  		sudo mkdir /var/ramdisk
+			sudo nano /etc/fstab
+				Enter the following lines to the fstab file:
+				tmpfs /var/ramdisk tmpfs nodev,nosuid,size=4M 0 0
+			sudo mount -a
+	4) Type "df" in terminal to confirm the ramdisk is eady to use.
+	   You should see a "tmpfs" file system mounted on /var/ramdisk
+	5) Copy the Eboard_Rev2.pyw file to the preferred [PATH].
+	5) To run the Eboard App, type "sudo python [PATH]/Eboard_Rev2.pyw" where [PATH] is the path
+	   to the saved "Eboard_Rev2.pyw" file.
